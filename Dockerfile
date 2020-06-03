@@ -43,3 +43,5 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     && rm -rf /var/list/apt/* \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
+    
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
