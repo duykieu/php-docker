@@ -1,3 +1,4 @@
+FROM php:7.3-apache
 # install all the dependencies and enable PHP modules
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
       procps \
