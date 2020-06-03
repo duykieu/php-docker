@@ -14,7 +14,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
       cron \
       libzip-dev \
       libmagickwand-dev --no-install-recommends \
-      ibpng-dev \
+      libpng-dev \
       libwebp-dev \
       libjpeg62-turbo-dev \
       libpng-dev libxpm-dev \
