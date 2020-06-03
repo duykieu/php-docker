@@ -21,25 +21,20 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
       exif \
       opcache \
       zip \
-
-
-RUN apt-get update && apt-get install -y libpng-dev
-RUN apt-get install -y \
+    && apt-get install -y libpng-dev \
     libwebp-dev \
     libjpeg62-turbo-dev \
     libpng-dev libxpm-dev \
-    libfreetype6-dev
-
-RUN docker-php-ext-configure gd \
+    libfreetype6-dev \
+&& docker-php-ext-configure gd \
     --with-gd \
     --with-webp-dir \
     --with-jpeg-dir \
     --with-png-dir \
     --with-zlib-dir \
     --with-xpm-dir \
-    --with-freetype-dir
-
-RUN docker-php-ext-install gd && rm -rf /tmp/* \
+    --with-freetype-dir \
+&& docker-php-ext-install gd && rm -rf /tmp/* \
     && rm -rf /var/list/apt/* \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
