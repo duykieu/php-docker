@@ -13,6 +13,12 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
       supervisor \
       cron \
       libzip-dev \
+      libmagickwand-dev --no-install-recommends \
+      ibpng-dev \
+      libwebp-dev \
+      libjpeg62-turbo-dev \
+      libpng-dev libxpm-dev \
+      libfreetype6-dev \
     && docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd \
     && docker-php-ext-configure intl \
     && docker-php-ext-install \
@@ -22,11 +28,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
       exif \
       opcache \
       zip \
-    && apt-get install -y libpng-dev \
-    libwebp-dev \
-    libjpeg62-turbo-dev \
-    libpng-dev libxpm-dev \
-    libfreetype6-dev \
 && docker-php-ext-configure gd \
     --with-gd \
     --with-webp-dir \
@@ -35,7 +36,10 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     --with-zlib-dir \
     --with-xpm-dir \
     --with-freetype-dir \
-&& docker-php-ext-install gd && rm -rf /tmp/* \
+&& docker-php-ext-install gd \ 
+&& printf "\n" | pecl install imagick \
+&& docker-php-ext-enable imagick \
+&& rm -rf /tmp/* \
     && rm -rf /var/list/apt/* \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
