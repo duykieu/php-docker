@@ -11,6 +11,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
       libxml2-dev \
       libreadline-dev \
       supervisor \
+      vim \
       cron \
       libzip-dev \
       libmagickwand-dev --no-install-recommends \
